@@ -1,0 +1,373 @@
+
+/* ---------------------
+fonts south park like
+---------------------- */
+
+@font-face {
+  font-family: 'zed_saidregular';
+  src: url('fonts/zed_said/zed_said-webfont.woff2') format('woff2'),
+       url('fonts/zed_said/zed_said-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cibolaregular';
+  src: url('fonts/south-park/cibola-webfont.woff2') format('woff2'),
+       url('fonts/south-park/cibola-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    background-image: url(images/heavenbkg.jpg);
+    background-size: cover;
+    background-position: bottom left;
+    overflow: hidden;
+  }
+
+  #display_game {
+    display: flex;
+    height: calc(100% - 130px);
+  }
+  
+  #memory-game {
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+  }
+
+  #memory-game img {
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(36, 34, 68);
+  }
+  
+  #memory-game img:active, #memory-game img:hover {
+    transform: scale(1.03);
+    transition: transform .0.5s;
+    box-shadow: 3px 3px 5px rgb(0, 0, 0);
+  }
+  
+  .flip {
+    transform: rotateY(180deg);
+  }
+  
+  .front-face,
+  .back-face {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background: rgb(49, 118, 170);
+    backface-visibility: hidden;
+  }
+  
+  .front-face {
+    transform: rotateY(180deg);
+  }
+
+
+
+
+
+  /* ----- button ----- */
+
+  #game_state{
+    height: 80px;
+    background-color: rgb(170, 170, 170, 0.6);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+    justify-content: center;
+  }
+
+  .play{
+    text-align: center;
+    background-color:#4A79A5;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+    margin: 0 15px;
+    float: left;
+  }
+
+  .play_button{
+    padding: 10px 20px;
+    color: white;
+    display: block;
+    text-decoration: none;
+    font-family: 'cibolaregular';
+  }
+
+  .play_button:active {
+    transform: scale(0.97);
+    transition: transform .0.5s;
+    box-shadow: 0;
+  }
+
+  .play:hover{
+    background-color: rgb(27, 40, 51);
+  }
+
+ /* ----- avatar styles ----- */
+  .imgClass{
+    cursor: pointer;
+  }
+
+  #avatarContainer1 img {
+    width: 80px;
+    margin-top: -20px;
+    margin-left: -25px;
+  }
+  
+  #kennyfront{
+    display:block;
+  }
+  
+  #kennyback{
+    display:none;
+    
+  }
+
+  /* ----- scoreBar style ----- */
+
+  .scoreBar{
+    text-align: center;
+    background-color:#4A79A5;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+    padding: 10px 20px;
+    color: black;
+    display: block;
+    text-decoration: none;
+    font-family: 'cibolaregular';
+    font-size: 2em;
+    margin-left: 15px
+  }
+
+  .playersName{
+    font-size: 3em;
+    font-family: 'cibolaregular';
+    font-weight: normal;
+    font-style: normal;
+    color: black;
+  }
+
+  .whitebutton{
+    text-align: center;
+    background-color:white;
+    border-radius: 5px;
+    box-shadow: 0 0 300px #ccc;
+    margin: 0 15px;
+    padding: 30px 50px;
+    -webkit-text-fill-color: darkgoldenrod;
+    display: block;
+    text-decoration: none;
+    font-family: 'cibolaregular';
+    font-size: 2em;
+   
+  }
+
+  .playersNameClass{
+    color: #ccc;
+    font-size: 4em;
+    font-family: 'cibolaregular';
+    src: url('fonts/south-park/cibola-webfont.woff2') format('woff2'),
+         url('fonts/south-park/cibola-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+  }
+
+  .replayButtonClass{
+    text-align: center;
+    background-color:darkgoldenrod;
+    border-radius: 5px;
+    -webkit-text-fill-color: white;
+    
+  }
+
+  #modal1{
+    width: 500px;
+    left: calc(50% - 250px);
+    text-align: center;
+    background-image: url('images/sign.jpg');
+    background-color: #6d5749;
+    border: solid;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.9);
+    position: absolute;
+} 
+
+@-webkit-keyframes pop-win {
+  0%   { bottom: -50vh; }
+  50%   { bottom: -50vh; }
+  70% { bottom: 40vh; }
+  80% { bottom: 35vh; }
+  90% { bottom: 40vh; }
+  100% { bottom: 35vh; }
+}
+@-moz-keyframes pop-win {
+  0%   { bottom: -50vh; }
+  50%   { bottom: -50vh; }
+  70% { bottom: 40vh; }
+  80% { bottom: 35vh; }
+  90% { bottom: 40vh; }
+  100% { bottom: 35vh; }
+}
+@-o-keyframes pop-win {
+  0%   { bottom: -50vh; }
+  50%   { bottom: -50vh; }
+  70% { bottom: 40vh; }
+  80% { bottom: 35vh; }
+  90% { bottom: 40vh; }
+  100% { bottom: 35vh; }
+}
+@keyframes pop-win {
+  0%   { bottom: -50vh; }
+  50%   { bottom: -50vh; }
+  70% { bottom: 40vh; }
+  80% { bottom: 35vh; }
+  90% { bottom: 40vh; }
+  100% { bottom: 35vh; }
+}
+
+.modal-content p{
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-family: 'zed_saidregular'
+}
+
+.modal-content h2{
+  font-family: 'cibolaregular'
+}
+
+.event_btn {
+  padding-left: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.event_btn .play{
+  margin: 0 0 0 15px;
+  color: white;
+}
+
+.event_btn .play:hover{
+  background-color: rgb(27, 40, 51);
+}
+
+.close{
+  color: white;
+}
+
+.close a {
+  text-align: center;
+  background-color: #4A79A5;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+  padding: 10px 20px;
+  font-family: 'cibolaregular';
+  text-decoration: none;
+  float: left;
+  color: white;
+}
+
+.close a:hover{
+  background-color: rgb(27, 40, 51);
+}
+
+.close h2 {
+  font-family: 'cibolaregular'
+}
+
+.close a:visited {
+  color: inherit;
+}
+
+.modal-content {
+  padding: 10px 30px;
+  color: rgb(0, 0, 0);
+  display: block;
+  text-decoration: none;
+}
+
+#kennywin {
+  margin-top: 30px;
+  width: 30%;
+  float: left;
+}
+
+#cartmanwin {
+  margin-top: 30px;
+  width: 30%;
+  float: right;
+}
+
+.imgClass{
+  cursor: pointer, auto;
+}
+
+a:hover {
+  transform: scale(1.03);
+}
+
+
+footer{
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+  position: fixed;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  #memory-game{ 
+    height: 415px;
+  }
+
+  .playersName {
+    font-size: 2em;
+  }
+
+  .scoreBar {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #memory-game{ 
+    width: 610px;
+  }
+
+  #modal1 {
+    width: 100%;
+    left: 0;
+  }
+}
